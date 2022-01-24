@@ -15,8 +15,10 @@ const dbConnectFunc = require("./db/dbIntegration");
 
 app.use("/api/public", publicRoute);
 
-dbConnectFunc().then(() => {
-  app.listen(process.env.PORT || 4080, () => {
-    console.log("Server Started");
-  });
-});
+dbConnectFunc()
+  .then(() => {
+    app.listen(process.env.PORT || 4080, () => {
+      console.log("Server Started");
+    });
+  })
+  .catch((e) => console.log(e.message, " ERR-index.js"));
