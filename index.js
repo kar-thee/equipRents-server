@@ -3,11 +3,7 @@ const app = express();
 const cors = require("cors");
 require("dotenv").config();
 
-app.use(
-  cors({
-    origin: "localhost:3000",
-  })
-);
+app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
