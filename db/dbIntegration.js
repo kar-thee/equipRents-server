@@ -8,7 +8,7 @@ const dbConnectFunc = async () => {
     });
     console.log("dbConnected...");
   } catch (e) {
-    console.log(e.msg, "err in dbConnectFunc");
+    console.log(e.message, "err in dbConnectFunc");
   }
 };
 
