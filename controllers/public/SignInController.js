@@ -23,13 +23,19 @@ const SignInController = async (req, res) => {
         .status(401)
         .send({ msg: "try again with valid credentials", type: "error" });
     }
-    const payload = { email: result.email, name: result.name, id: result._id };
-    const token = createTokenFunc(payload);
 
     let role = "customer";
     if (result.email === process.env.ADMINEMAILID) {
       role = "admin";
     }
+
+    const payload = {
+      email: result.email,
+      name: result.name,
+      id: result._id,
+      role,
+    };
+    const token = createTokenFunc(payload);
 
     res.send({
       token,
