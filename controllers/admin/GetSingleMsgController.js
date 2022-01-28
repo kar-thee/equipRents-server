@@ -3,7 +3,7 @@ const ContactForm = require("../../models/ContactForm");
 const GetSingleMsgController = async (req, res) => {
   const { id } = req.params;
   try {
-    const msgFound = await ContactForm.findOne({ id });
+    const msgFound = await ContactForm.findById(id);
     if (!msgFound) {
       return res.status(404).send({ msg: e.message, type: "error" });
     }
