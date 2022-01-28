@@ -28,6 +28,6 @@ router.put("/productPut/:pid", UpdateProductController);
 
 router.delete("/productDelete/:pid", DeleteProductController);
 
-router.get("/categorysearch", SearchCategoryProductController);
+router.post("/categorysearch/:categoryValue", SearchCategoryProductController);
 
 module.exports = router;

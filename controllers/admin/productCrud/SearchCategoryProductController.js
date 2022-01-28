@@ -1,14 +1,16 @@
 const ProductCollection = require("../../../models/product");
 
 const SearchCategoryProductController = async (req, res) => {
-  const { category } = req.query;
+  const { categoryValue } = req.params;
   try {
     if (!category) {
       return res
         .status(404)
         .send({ msg: "No Category parameter available", type: "error" });
     }
-    const productFound = await ProductCollection.find({ category });
+    const productFound = await ProductCollection.find({
+      category: categoryValue,
+    });
     if (productFound.length === 0) {
       return res
         .status(404)
