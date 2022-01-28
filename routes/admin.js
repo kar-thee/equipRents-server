@@ -9,12 +9,15 @@ const GetSingleProductController = require("../controllers/admin/productCrud/Get
 const UpdateProductController = require("../controllers/admin/productCrud/UpdateProductController");
 const DeleteProductController = require("../controllers/admin/productCrud/DeleteProductController");
 const SearchCategoryProductController = require("../controllers/admin/productCrud/SearchCategoryProductController");
+const ReplyToMsgController = require("../controllers/admin/ReplyToMsgController");
 
 const router = require("express").Router();
 
 router.get("/allmsg", GetAllMsgController);
 
 router.get("/msg/:id", GetSingleMsgController);
+
+router.post("/msg/replyEmail", ReplyToMsgController);
 
 router.post("/uploadUrl", GetUploadUrlController);
 

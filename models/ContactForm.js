@@ -20,6 +20,10 @@ const contactSchema = mongoose.Schema(
     query: {
       type: String,
     },
+    queryResonse: {
+      type: String,
+      default: undefined,
+    },
   },
   { timestamps: true }
 );
