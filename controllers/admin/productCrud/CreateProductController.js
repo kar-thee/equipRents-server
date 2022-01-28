@@ -1,20 +1,10 @@
 const ProductCollection = require("../../../models/product");
 
 const CreateProductController = async (req, res) => {
-  const { url, name, desc, section, category, subCategory, qty, price } =
-    req.body;
+  const { url, name, desc, section, category, qty, price } = req.body;
 
   try {
-    if (
-      !url ||
-      !name ||
-      !desc ||
-      !section ||
-      !category ||
-      !subCategory ||
-      !qty ||
-      !price
-    ) {
+    if (!url || !name || !desc || !section || !category || !qty || !price) {
       return res
         .status(404)
         .send({ msg: "No empty Values Allowed", type: "error" });
@@ -26,7 +16,6 @@ const CreateProductController = async (req, res) => {
       desc,
       section,
       category,
-      subCategory,
       qty,
       price,
     });
