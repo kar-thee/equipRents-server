@@ -8,6 +8,7 @@ const GetAllProductsController = require("../controllers/admin/productCrud/GetAl
 const GetSingleProductController = require("../controllers/admin/productCrud/GetSingleProductController");
 const UpdateProductController = require("../controllers/admin/productCrud/UpdateProductController");
 const DeleteProductController = require("../controllers/admin/productCrud/DeleteProductController");
+const SearchCategoryProductController = require("../controllers/admin/productCrud/SearchCategoryProductController");
 
 const router = require("express").Router();
 
@@ -26,5 +27,7 @@ router.get("/productGet/:pid", GetSingleProductController);
 router.put("/productPut/:pid", UpdateProductController);
 
 router.delete("/productDelete/:pid", DeleteProductController);
+
+router.get("/categorysearch", SearchCategoryProductController);
 
 module.exports = router;
