@@ -6,6 +6,7 @@ const ReplyToMsgController = async (req, res) => {
     await mailerFunc(mailContent, recipientEmail);
     res.send({ msg: "Mail Sent Successfully", type: "success" });
   } catch (e) {
+    console.log(e, "   err in sending mail");
     return res.status(500).send({ msg: e.message, type: "error" });
   }
 };

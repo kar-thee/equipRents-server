@@ -22,7 +22,6 @@ const mailerFunc = async (mailContent, toAddress) => {
     return response;
   } catch (e) {
     console.log(e.message, " xerr-mailFunc");
-    return res.status(500).send({ msg: e.message, type: "error" });
   }
 };
 module.exports = mailerFunc;
