@@ -1,7 +1,7 @@
 const ProductCollection = require("../../../models/product");
 
 const SearchCategoryProductController = async (req, res) => {
-  const { categoryValue } = req.params;
+  const { categoryValue } = req.body;
   try {
     if (!category) {
       return res
