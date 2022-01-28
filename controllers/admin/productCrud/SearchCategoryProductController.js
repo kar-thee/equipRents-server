@@ -3,7 +3,7 @@ const ProductCollection = require("../../../models/product");
 const SearchCategoryProductController = async (req, res) => {
   const { categoryValue } = req.body;
   try {
-    if (!category) {
+    if (!categoryValue) {
       return res
         .status(404)
         .send({ msg: "No Category parameter available", type: "error" });
@@ -22,6 +22,7 @@ const SearchCategoryProductController = async (req, res) => {
       type: "success",
     });
   } catch (e) {
+    console.log(e);
     return res.status(500).send({ msg: e.message, type: "error" });
   }
 };
