@@ -6,6 +6,7 @@ require("dotenv").config();
 const dbConnectFunc = require("./db/dbIntegration");
 
 const publicRoute = require("./routes/public");
+const privateRoute = require("./routes/private");
 const adminRoute = require("./routes/admin");
 const AuthCheck = require("./middlewares/AuthCheck");
 const AdminCheck = require("./middlewares/AdminCheck");
@@ -18,6 +19,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/public", publicRoute);
+app.use("/api/admin", AuthCheck, privateRoute);
 app.use("/api/admin", AuthCheck, AdminCheck, adminRoute);
 
 dbConnectFunc()
