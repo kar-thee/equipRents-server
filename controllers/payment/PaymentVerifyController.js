@@ -1,5 +1,6 @@
 const OrderCollection = require("../../models/orders");
 const crypto = require("crypto");
+const mailerFunc = require("../../utils/mailer");
 
 const PaymentVerifyController = async (req, res) => {
   const {
@@ -27,7 +28,7 @@ const PaymentVerifyController = async (req, res) => {
       });
     }
     //since verified payment, saving it to orderCollection
-    await OrderCollection.findOneAndUpdate(
+    const orderFound = await OrderCollection.findOneAndUpdate(
       { orderIdGenerated: orderId },
       {
         razorpay_payment_id,
@@ -36,6 +37,23 @@ const PaymentVerifyController = async (req, res) => {
         isPaymentSuccess: true,
       }
     );
+    if (!orderFound) {
+      return res
+        .status(400)
+        .send({ msg: "OrderId not found", type: "failure" });
+    }
+    const emailContent = `Payment made for order ${
+      orderFound.cart.length > 1
+        ? orderFound.cart.map((cartObj) => cartObj.name).join(" and ")
+        : orderFound.cart[0].name
+    } is successful`;
+
+    await mailerFunc(
+      emailContent,
+      orderFound.email,
+      "equipRentsApp-Payment Successful"
+    );
+
     res.send({ msg: "Payment successful", type: "success" });
   } catch (e) {
     res.status(500).send({ msg: e.message, type: "error" });

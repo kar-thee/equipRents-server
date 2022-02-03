@@ -1,9 +1,12 @@
 const res = require("express/lib/response");
 const nodemailer = require("nodemailer");
 
-const mailerFunc = async (mailContent, toAddress) => {
+const mailerFunc = async (
+  mailContent,
+  toAddress,
+  mailSubject = "Equiprents-QueryHelper"
+) => {
   try {
-    const mailSubject = "Equiprents-QueryHelper";
     const transporter = await nodemailer.createTransport({
       service: "gmail",
       auth: {
