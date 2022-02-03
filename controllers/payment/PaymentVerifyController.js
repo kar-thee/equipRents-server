@@ -10,6 +10,16 @@ const PaymentVerifyController = async (req, res) => {
     orderId,
   } = req.body;
   try {
+    if (
+      !razorpay_payment_id ||
+      !razorpay_order_id ||
+      !razorpay_signature ||
+      !orderId
+    ) {
+      return res
+        .status(400)
+        .send({ type: "error", msg: "No empty values allowed" });
+    }
     //save data after verifying payment
     let body = razorpay_order_id + "|" + razorpay_payment_id;
 

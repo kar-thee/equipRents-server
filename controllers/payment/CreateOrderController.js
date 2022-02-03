@@ -4,6 +4,11 @@ const OrderCollection = require("../../models/orders");
 const CreateOrderController = async (req, res) => {
   const { orderAmount, cartArray, email } = req.body;
   try {
+    if (!orderAmount || !cartArray || !email) {
+      return res
+        .status(400)
+        .send({ type: "error", msg: "All fields necessary" });
+    }
     //save order details
     const orderSaved = await OrderCollection.create({
       orderAmount,

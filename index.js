@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/public", publicRoute);
-app.use("/api/admin", AuthCheck, privateRoute);
+app.use("/api/private", AuthCheck, privateRoute);
 app.use("/api/admin", AuthCheck, AdminCheck, adminRoute);
 
 dbConnectFunc()
