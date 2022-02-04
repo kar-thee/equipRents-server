@@ -14,8 +14,10 @@ a backend server application developed with Expressjs (part of full Stack MERN A
  <li> Sending Emails using nodemailer</li>
  <li> Uploaded Images to Amazon S3 Bucket with aws-sdk</li>
  <li> razorpay payment gateway Integrated</li>
- <li>mongoose ODM</li>
+ <li>mongoose ODM </li>
  <li>cors enabled</li>
+ <li>DB -> Order collection,Product Collection,ContactForm Collection and User Collection</li>
+ <li>CRUD operations developed for -> Product,User and Order</li>
 <br>
 
 ## App Features
