@@ -2,7 +2,7 @@ const ProductCollection = require("../../../models/product");
 
 const UpdateProductController = async (req, res) => {
   const { pid } = req.params;
-  const { name, desc, price, qty } = req.body;
+  const { name, price, qty } = req.body;
 
   try {
     if (!pid) {
@@ -14,7 +14,6 @@ const UpdateProductController = async (req, res) => {
     }
     const updateResponse = await ProductCollection.findByIdAndUpdate(pid, {
       name,
-      desc,
       price,
       qty,
     });
